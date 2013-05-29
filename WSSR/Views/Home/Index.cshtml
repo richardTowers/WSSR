@@ -1,0 +1,57 @@
+﻿@{ Layout = null; }
+
+<!doctype html>
+
+<html ng-app="WSSR">
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>WSSR</title>
+	<link rel="SHORTCUT ICON" href="@Url.Content("~/Content/images/favicon.ico")"/>
+	<link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+	<style>
+		header {
+			text-align: center;
+		}
+		header h1 {
+			font-size: 15em;
+			line-height: normal;
+		}
+			h1 small {
+				display: block;
+			}
+		@@media (max-width: 979px) and (min-width: 768px) {
+			header h1 {
+				font-size: 12em;
+			}
+		}
+		@@media (max-width: 767px) {
+			header h1 {
+				font-size: 10em;
+			}
+		}
+		header img {
+			width: 30%;
+		}
+		.button-container {
+			padding: 20px;
+			text-align: center;
+		}
+		.controls .btn {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		.controls img {
+			width: 80px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div ng-view></div>
+	</div>
+	
+	<script src="@Url.Content("~/Scripts/angular.js")"></script>	
+	<script src="@Url.Content("~/Scripts/angular-resource.js")"></script>
+	<script src="@Url.Content("~/Scripts/App/app.js")"></script>
+</body>
+</html>

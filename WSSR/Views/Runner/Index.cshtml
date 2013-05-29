@@ -1,0 +1,72 @@
+﻿@{ Layout = null; }
+
+<div class="wssr">
+	<h1>WSSR</h1>
+</div>
+
+<div class="row">
+	<div class="controls affix">
+		<img src="@Url.Content("~/Content/images/USSR.svg")" alt="USSR Emblem" />
+		<img src="@Url.Content("~/Content/images/USSR.svg")" alt="USSR Emblem" />
+		<button
+			class="btn btn-block"
+			ng-class="{'disabled': inProgress}"
+			ng-disabled="inProgress"
+			ng-click="selectAll(scriptGroups)">Select All<i class="icon-check pull-right"></i></button>
+		<button
+			class="btn btn-block" 
+			ng-class="{'disabled': inProgress}"
+			ng-disabled="inProgress"
+			ng-click="deselectAll(scriptGroups)">Deselect All<i class="icon-remove-circle pull-right"></i></button>
+		<button
+			class="btn btn-block btn-primary"
+			ng-class="{'disabled': inProgress}"
+			ng-disabled="inProgress"
+			ng-click="runAllSelected(scriptGroups)"
+			ng-switch="inProgress">
+				<span ng-switch-default>Run Selected<i class="icon-white icon-play pull-right"></i></span>
+				<span ng-switch-when="true">Runnng...</span>
+		</button>
+	</div>
+	<div class="span10 pull-right">
+		<div ng-repeat="scriptGroup in scriptGroups">
+			<h2>{{scriptGroup.Title}}</h2>
+			<button 
+				class="btn" 
+				ng-class="{'disabled': inProgress}"
+				ng-disabled="inProgress"
+				ng-click="selectGroup(scriptGroup.Scripts)"><i class="icon-check"></i></button>
+			<button 
+				class="btn"
+				ng-class="{'disabled': inProgress}"
+				ng-disabled="inProgress"
+				ng-click="deselectGroup(scriptGroup.Scripts)"><i class="icon-remove-circle"></i></button>
+			<table class="table table-striped">
+				<tbody>
+					<tr ng-repeat="script in scriptGroup.Scripts">
+						<td style="width: 5%;">
+							<input type="checkbox"
+								ng-change="clearResultStatus(script)"
+								ng-checked="script.enabled"
+								ng-model="script.enabled" />
+						</td>
+						<td>{{script.Name}}</td>
+						<td ng-switch="script.resultStatus">
+							<button
+								ng-switch-default
+								ng-click="run(script)"
+								class="btn btn-mini pull-right"
+								ng-class="{'disabled': script.inProgress}"
+								ng-disabled="script.inProgress"
+								ng-switch="script.inProgress">
+									<i ng-switch-default class="icon-play"></i>
+									<i ng-switch-when="true" class="icon-repeat"></i>
+							</button>
+							<span ng-switch-when="success" class="label label-success pull-right">Success</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+﻿@{ Layout = null; }
+
+<header>
+	<img src="@Url.Content("~/Content/images/USSR.svg")" alt="USSR Emblem" />
+	<img src="@Url.Content("~/Content/images/USSR.svg")" alt="USSR Emblem" />
+
+	<h1>WSSR<small>Web Services Script Runner</small></h1>
+</header>
+
+<button
+	class="btn btn-primary btn-block btn-large"
+	ng-click="updateAndBegin()"
+	ng-class="{'disabled': status == 'updating'}"
+	ng-disabled="status == 'updating'">
+		<span ng-hide="status == 'updating'">Update Scripts and Begin</span>
+		<span ng-show="status == 'updating'">Updating...</span>
+</button>
+<div class="button-container">
+	<button
+		class="btn btn-warning btn-small"
+		ng-click="begin()"
+		ng-class="{'disabled': status}"
+		ng-disabled="status">
+			Begin Without Updating
+	</button>
+</div>

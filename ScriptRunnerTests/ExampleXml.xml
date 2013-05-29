@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Script author="purdyl">
+  <Authorisation Username="AHTEST01" Password="LLJSOMETHING" />
+  <Requests>
+    <Call Id="initialAddContact">
+      <AddContact>
+        <Message>
+          <ContactRef Value="12345" />
+        </Message>
+      </AddContact>
+    </Call>
+    <Call Id="someOtherCall">
+      <SomeOtherCall>
+        <Message>
+          <SomeField Value="@initialAddContact.Element(`Message`).Element(`ContactRef`).Attribute(`Value`).Value" />
+        </Message>
+      </SomeOtherCall>
+    </Call>
+  </Requests>
+</Script>
